@@ -9,7 +9,8 @@
                 sensitive: true,
                 emptyQuery: false,
                 queryBy: ['name', 'username'],
-                typeaheadOpts: {}
+                typeaheadOpts: {direction: "down"}
+
             };
 
             var settings = $.extend({}, this.opts, options),
@@ -158,6 +159,7 @@
                         matcher: _matcher,
                         updater: _updater,
                         sorter: _sorter
+
                     }, settings.typeaheadOpts));
                 }
             });

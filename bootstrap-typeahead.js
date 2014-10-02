@@ -58,17 +58,29 @@
   , show: function () {
       var pos = $.extend({}, this.$element.position(), {
         height: this.$element[0].offsetHeight
-      })
+      });
+
+      var css = {
+          top: pos.top + pos.height
+          , left: pos.left
+      };
 
       this.$menu
         .insertAfter(this.$element)
-        .css({
-          top: pos.top + pos.height
-        , left: pos.left
-        })
-        .show()
+        .css(css)
+        .show();
 
-      this.shown = true
+
+      /**
+       * Needed to show the dropdown so I can get outerHeight()
+       */
+      if (this.options.direction == 'up') {
+          css.top = pos.top - this.$menu.outerHeight();
+      }
+
+      this.$menu.css(css);
+
+      this.shown = true;
       return this
     }
 
@@ -309,6 +321,7 @@
   , menu: '<ul class="typeahead dropdown-menu"></ul>'
   , item: '<li><a href="#"></a></li>'
   , minLength: 1
+  , direction: 'down'
   }
 
   $.fn.typeahead.Constructor = Typeahead

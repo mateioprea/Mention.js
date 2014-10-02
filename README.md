@@ -28,6 +28,22 @@ $("#multi-users").mention({
 });
 `````
 
+For `drop-up` menu, use the `typeaheadOpts: {direction: 'up'}` option, like this.
+
+`````javascript
+$("#multi-users").mention({
+    delimiter: '@',
+    typeaheadOpts: {direction: "up"},
+    users: [{
+        username: "ashley"
+    }, {
+        username: "roger"
+    }, {
+        username: "frecklefart123"
+    }]
+});
+`````
+
 ## Sensitivity
 `````javascript
 $("#multi-users").mention({
